@@ -31,7 +31,7 @@ class jabber() {
     # Create the jabber group and user
     group { "${jabber_group}":
             ensure => present,
-            gid    => 1000
+            gid    => 2000
     }
     user { "${jabber_user}":
            ensure => present,
