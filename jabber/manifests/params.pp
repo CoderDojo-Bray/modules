@@ -24,6 +24,10 @@ class jabber::params {
     $jabber_pid_dir   = ["/usr/local/var/","/usr/local/var/jabberd/","/usr/local/var/jabberd/pid"]
     $jabber_log_dir   = "/var/log/jabber"
     
+    # Jabber configuration directory
+    $jabber_config_dir = "/usr/local/etc/"
+    
+    # Some generic parameters
     $user    = "root"
     $path    = "/usr/bin:/bin:/usr/sbin:/sbin"
     $timeout = 0

@@ -82,5 +82,26 @@ class jabber::build {
         creates => "${jabber::params::jabber_comp_inst}/jabberd.service"
     }
     
+    ->
+    
+    exec { "set ownership of the configuration files":
+        user    => $jabber::params::user,
+        cwd     => "${jabber::params::jabber_config_dir}",
+        timeout => $jabber::params::timeout,
+        path    => $jabber::params::path,
+        command => "chown -R root:${jabber::params::jabber_user} ${jabber::params::jabber_config_dir}"
+    }
+    
+    ->
+    
+    exec { "set permissions of the configuration files":
+        user    => $jabber::params::user,
+        cwd     => "${jabber::params::jabber_config_dir}",
+        timeout => $jabber::params::timeout,
+        path    => $jabber::params::path,
+        command => "chmod -R 640 ${jabber::params::jabber_config_dir}"
+    }
+    
+    
     
 }
