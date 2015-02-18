@@ -7,6 +7,9 @@
 
 class jabber() {
 
+    # define prerequisites
+    include jabber::prerequisites
+    
     # Some definitions
     include jabber::params
     
