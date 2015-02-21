@@ -19,19 +19,24 @@
 # CoderDojo Bray
 #
 
-class jabber() {
+class augeas() {
 
-    # define prerequisites
-    include jabber::prerequisites
-    
-    # Some definitions
-    include jabber::params
-    
-    # Do build setup ... 
-    include jabber::setup
+    # for the moment, very simple. Just installs two debian augest packages
 
-    # Build and Install Jabber components
-    include jabber::build    
+    package {'libaugeas-ruby:':
+        ensure => installed
+    }
     
+    package {'libaugeas0:':
+        ensure => installed
+    }
+    
+    package {'augeas-tools:':
+        ensure => installed
+    }
+
+    package {'augeas-lenses:':
+        ensure => installed
+    }
     
 }
