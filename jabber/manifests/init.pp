@@ -30,8 +30,9 @@ class jabber() {
     # Do build setup ... 
     include jabber::setup
 
-    # Build and Install Jabber components
+    # Build the Jabber components
     include jabber::build    
     
-    
+    # Install the Jabber components
+    include jabber::install
 }
