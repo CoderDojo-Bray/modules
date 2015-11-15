@@ -116,6 +116,4 @@ class jabber::build {
         command => "chmod -R 640 ${jabber::params::jabber_config_dir}"
     }
     
-    # test commit ... setup ...
-    
 }
