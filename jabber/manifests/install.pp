@@ -25,6 +25,12 @@ class jabber::install {
     include jabber::params
    
     # This very simple example is your "starter" install module
-    # It installs the standard Jabber client on our DojoBox, and installed the python module which calls home
+    # It sets up the "dojo" standard configuration on our remote server, and starts up the jabber components
+    
+    # First, pickup the standard client jabber configuration file. This defines what we will start ... 
+    file { "/etc/local/etc/jabberd.cfg":
+           source => "puppet://dojobox-core.dyndns-server.com/modules/jabber/jabberd-client-conf.cfg"
+    }
+
         
 }
