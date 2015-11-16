@@ -7,14 +7,20 @@
 
 class pyextras {
 
-    package { 'pip':
+    include jabber::params
+
+    $pytools = ['python-pip', 'python-setuptools']
+
+    package { $pytools:
                ensure => installed,
     }
     
     ->
     
-    exec { "xmpp":
+    exec { "install python xmpp library":
         timeout => $jabber::params::timeout,
+        user    => $jabber::params::user,
+        path    => $jabber::params::path,
         command => "pip install sleekxmpp"
     }    
        
