@@ -28,8 +28,12 @@ class jabber::install {
     # It sets up the "dojo" standard configuration on our remote server, and starts up the jabber components
     
     # First, pickup the standard client jabber configuration file. This defines what we will start ... 
-    file { "/etc/local/etc/jabberd.cfg":
-           source => "puppet://dojobox-core.dyndns-server.com/modules/jabber/jabberd-client-conf.cfg"
+    file { "/usr/local/etc/jabberd.cfg":
+           ensure => present,
+           owner  => 'root',
+           group  => 'jabber',
+           mode   => '0640',
+           source => "puppet:///modules/jabber/jabberd-client-conf.cfg"
     }
 
         
