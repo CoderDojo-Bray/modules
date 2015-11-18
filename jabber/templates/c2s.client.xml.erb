@@ -1,0 +1,22 @@
+<!-- c2s configuration : Managed by puppet -->
+<c2s>
+    <!-- Our ID on the network -->
+    <id>c2s</id>
+    
+  <!-- The process ID file -->
+  <pidfile>/usr/local/var/jabberd/pid/c2s.pid</pidfile>
+  
+  <!-- Router connection configuration -->
+  <router>
+    <!-- IP/port the router is waiting for connections on -->
+    <ip><%= @::serverip %></ip>            
+    <port><%= $jabber::params::routerPort %></port>             
+
+    <!-- Username/password to authenticate as -->
+    <user><%= $jabber::params::routerUser %></user>          
+    <pass><%= $jabber::params::routerPassword %></pass>  
+
+   </router>    
+  
+</c2s>
+

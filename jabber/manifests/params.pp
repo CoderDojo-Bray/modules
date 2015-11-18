@@ -44,6 +44,11 @@ class jabber::params {
     $user    = "root"
     $path    = "/usr/bin:/bin:/usr/sbin:/sbin"
     $timeout = 0
-    $options = ''    
+    $options = ''   
+
+    # Some client configuration parameters
+    $routerPort = 5347   
+    $routerUser = "dojojab"
+    $routerPassword = "f45g6y*i"    
     
 }
