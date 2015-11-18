@@ -28,12 +28,21 @@ class jabber::install {
     # It sets up the "dojo" standard configuration on our remote server, and starts up the jabber components
     
     # First, pickup the standard client jabber configuration file. This defines what we will start ... 
-    file { "/usr/local/etc/jabberd.cfg":
+    file { "${jabber::params::jabber_config_dir}/jabberd.cfg":
            ensure => present,
            owner  => 'root',
            group  => 'jabber',
            mode   => '0640',
            source => "puppet:///modules/jabber/jabberd-client-conf.cfg"
+    }
+    
+    # Configure the c2s1.xml file (test)
+    file { "${jabber::params::jabber_config_dir}/c2s1.xml":
+           ensure => file,
+           owner  => 'root',
+           group  => 'jabber',
+           mode   => '0640',
+           content => template('jabber/c2s.client.xml.erb')
     }
 
         
