@@ -25,10 +25,13 @@ class jabber::install {
     include jabber::params
 
     # Populate some shorthands to variables we want to use in templates
+    # Makes the templates shorter
+    
     $routerPassword = $jabber::params::routerPassword   
     $routerUser = $jabber::params::routerUser
     $routerPort = $jabber::params::routerPort
     $routerServer = $jabber::params::routerServer
+    $masterWANIP  = generate('/etc/puppet/scripts/wanip.sh')
 
     # This very simple example is your "starter" install module
     # It sets up the "dojo" standard configuration on our remote server, and starts up the jabber components
