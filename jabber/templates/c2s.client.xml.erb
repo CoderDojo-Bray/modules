@@ -9,12 +9,12 @@
   <!-- Router connection configuration -->
   <router>
     <!-- IP/port the router is waiting for connections on -->
-    <ip><%= @::serverip %></ip>            
-    <port><%= $jabber::params::routerPort %></port>             
+    <ip><%= @routerServer %></ip>            
+    <port><%= @routerPort %></port>             
 
     <!-- Username/password to authenticate as -->
-    <user><%= $jabber::params::routerUser %></user>          
-    <pass><%= $jabber::params::routerPassword %></pass>  
+    <user><%= @routerUser %></user>          
+    <pass><%= @routerPassword %></pass>  
 
    </router>    
   
