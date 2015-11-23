@@ -30,8 +30,8 @@ class jabber::install {
     $routerPassword = $jabber::params::routerPassword   
     $routerUser = $jabber::params::routerUser
     $routerPort = $jabber::params::routerPort
-    $routerServer = $jabber::params::routerServer
     $masterWANIP  = generate('/etc/puppet/scripts/wanip.sh')
+    $routerPEMFile = ${jabber::params::jabber_config_dir}/$j{abber::params::jabber_cert_name}
 
     # This very simple example is your "starter" install module
     # It sets up the "dojo" standard configuration on our remote server, and starts up the jabber components
@@ -44,6 +44,19 @@ class jabber::install {
            mode   => '0640',
            source => "puppet:///modules/jabber/jabberd-client-conf.cfg"
     }
+
+    ->
+    
+    # Make sure the certificate is copied to the client
+    file { "${jabber::params::jabber_config_dir}/${jabber::params::jabber_cert_name}":
+           ensure => present,
+           owner  => 'root',
+           group  => 'jabber',
+           mode   => '0640',
+           source => "puppet:///files/${jabber_cert_name}"
+    }    
+    
+    ->
     
     # Configure the c2s1.xml file (test)
     file { "${jabber::params::jabber_config_dir}/c2s1.xml":

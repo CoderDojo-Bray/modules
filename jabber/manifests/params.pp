@@ -40,6 +40,9 @@ class jabber::params {
     # Jabber configuration directory
     $jabber_config_dir = "/usr/local/etc/"
     
+    # Some server side settings
+    $jabber_cert_name = "server.pem"
+    
     # Some generic parameters
     $user    = "root"
     $path    = "/usr/bin:/bin:/usr/sbin:/sbin"
