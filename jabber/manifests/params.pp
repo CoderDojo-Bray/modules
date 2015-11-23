@@ -38,7 +38,7 @@ class jabber::params {
     $jabber_log_dir   = "/var/log/jabber"
     
     # Jabber configuration directory
-    $jabber_config_dir = "/usr/local/etc/"
+    $jabber_config_dir = "/usr/local/etc"
     
     # Some server side settings
     $jabber_cert_name = "server.pem"

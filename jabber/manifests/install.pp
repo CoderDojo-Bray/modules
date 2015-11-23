@@ -31,7 +31,7 @@ class jabber::install {
     $routerUser = $jabber::params::routerUser
     $routerPort = $jabber::params::routerPort
     $masterWANIP  = generate('/etc/puppet/scripts/wanip.sh')
-    $routerPEMFile = ${jabber::params::jabber_config_dir}/$j{abber::params::jabber_cert_name}
+    $routerPEMFile = "${jabber::params::jabber_config_dir}/${jabber::params::jabber_cert_name}"
 
     # This very simple example is your "starter" install module
     # It sets up the "dojo" standard configuration on our remote server, and starts up the jabber components
