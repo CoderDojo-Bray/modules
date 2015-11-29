@@ -24,9 +24,27 @@ class jabber::install {
     # Some definitions
     include jabber::params
 
+    # Configure the Postgres database for Jabberd2 use
+    # Create the database and user
+    postgresql::server::db { 'jabberd2':
+        user     => 'jabberd2',
+        password => postgresql_password('jabberd2', 'jabberd2'),
+    }
+    
+    # Trust this user (means we can execute PSQL commands for that user)
+    postgresql::server::pg_hba_rule { 'allow the jabber user to access the database from localhost':
+      description => "Open up postgresql for access by the jabberd2 user from this node",
+      type => 'host',
+      database => 'jabberd2',
+      user => 'jabberd2',
+      address => '127.0.0.1',
+      auth_method => 'trust',
+    }
+   
     # Populate some shorthands to variables we want to use in templates
     # Makes the templates shorter
     
+    $routerServer = $jabber::params::routerServer  
     $routerPassword = $jabber::params::routerPassword   
     $routerUser = $jabber::params::routerUser
     $routerPort = $jabber::params::routerPort
@@ -58,8 +76,8 @@ class jabber::install {
     
     ->
     
-    # Configure the c2s1.xml file (test)
-    file { "${jabber::params::jabber_config_dir}/c2s1.xml":
+    # Configure the c2s.xml file
+    file { "${jabber::params::jabber_config_dir}/c2s.xml":
            ensure => file,
            owner  => 'root',
            group  => 'jabber',
