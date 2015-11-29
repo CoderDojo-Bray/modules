@@ -37,7 +37,15 @@ class jabber::install {
       type => 'host',
       database => 'jabberd2',
       user => 'jabberd2',
-      address => '127.0.0.1',
+      address => '127.0.0.1/32',
+      auth_method => 'trust',
+    }
+   
+    postgresql::server::pg_hba_rule { 'allow the jabber user to access the database from localhost':
+      description => "Open up postgresql for access by the jabberd2 user from this node",
+      type => 'local',
+      database => 'jabberd2',
+      user => 'jabberd2',
       auth_method => 'trust',
     }
    
@@ -85,5 +93,17 @@ class jabber::install {
            content => template('jabber/c2s.client.xml.erb')
     }
 
+    ->
+    
+    # Execute the PSQL setup script to setup Postgres on the client for Jabber use
+    exec { "Configure the PostgreSQL database":
+        user    => $jabber::params::user,
+        cwd     => "${jabber::params::src_dir}/${jabber::params::jabber_vers}/tools",
+        timeout => $jabber::params::timeout,
+        path    => $jabber::params::path,
+        command => "psql -d jabberd2 -a -f db-setup.pgsql",
+        onlyif => "psql "
+    }
+    
         
 }
