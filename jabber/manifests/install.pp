@@ -32,21 +32,23 @@ class jabber::install {
     }
     
     # Trust this user (means we can execute PSQL commands for that user)
-    postgresql::server::pg_hba_rule { 'allow the jabber user to access the database from localhost':
+    postgresql::server::pg_hba_rule { 'allow the jabber user to access the database from localhost (TCP/IP)':
       description => "Open up postgresql for access by the jabberd2 user from this node",
       type => 'host',
       database => 'jabberd2',
       user => 'jabberd2',
-      address => '127.0.0.1/32',
+      address => 'samehost',
       auth_method => 'trust',
+      order => '000',
     }
    
-    postgresql::server::pg_hba_rule { 'allow the jabber user to access the database from localhost':
+    postgresql::server::pg_hba_rule { 'allow the jabber user to access the database from localhost (unix socket)':
       description => "Open up postgresql for access by the jabberd2 user from this node",
       type => 'local',
       database => 'jabberd2',
       user => 'jabberd2',
       auth_method => 'trust',
+      order => '000',
     }
    
     # Populate some shorthands to variables we want to use in templates
