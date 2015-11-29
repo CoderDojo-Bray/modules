@@ -203,6 +203,78 @@
 
     </check>
 
-  </io>  
+  </io> 
+
+
+  <!-- Statistics -->
+  <stats></stats>
+
+  <!-- PBX integration -->
+  <pbx></pbx>  
+  
+  <stream_redirect></stream_redirect>  
+  
+ <!-- Authentication/registration database configuration -->
+  <authreg>
+    <!-- Dynamic authreg modules path -->
+    <path>/usr/local/lib/jabberd</path>
+
+    <!-- Backend module to use -->
+    <module>sqlite</module>
+
+    <!-- Available authentication mechanisms -->
+    <mechanisms>
+
+      <!-- These are the traditional Jabber authentication mechanisms.
+           Comment out any that you don't want to be offered to clients.
+           Note that if the auth/reg module does not support one of
+           these mechanisms, then it will not be offered regardless of
+           whether or not it is enabled here. -->
+      <traditional>
+        <plain/>
+      </traditional>
+
+      <!-- SASL authentication mechanisms. Comment out any that you
+           don't want to be offered to clients. Again, if the auth/reg
+           module does not support one of these mechanisms, then it will
+           not be offered. -->
+      <sasl>
+        <plain/>
+        </sasl>
+
+    </mechanisms>
+
+    <!-- PostgreSQL module configuration -->
+    <pgsql>
+      <!-- PostgreSQL connection info.
+           For the rest of the options see
+           http://www.postgresql.org/docs/8.0/interactive/libpq.html -->
+      <conninfo>dbname=jabberd2 user=jabberd2 password=topsecret</conninfo>
+
+      <!-- Alternatively you may set connection settings separately.
+           These are used only in absence of 'conninfo' -->
+
+      <!-- Database server host and port -->
+      <host>localhost</host>
+      <port>5432</port>
+
+      <!-- Database schema -->
+      <schema>public</schema>
+
+
+      <!-- Passwords in DB may be stored in plain or hashed format -->
+      <!-- NOTE: If you are using hashed passwords, the only auth
+                 method that will work is PLAIN.
+                 Make sure that you disabled others in 'mechanisms'
+                 sections of the config file. -->
+      <password_type>
+        <!-- only one may be enabled here -->
+        <a1hash/>
+      </password_type>
+    </pgsql>
+
+  </authreg>  
+  
+  
 </c2s>
 
