@@ -98,14 +98,22 @@ class jabber::install {
     ->
     
     # Execute the PSQL setup script to setup Postgres on the client for Jabber use
+    # We only want to do this once, so we drop a "breadcrumb" onto the file system
     exec { "Configure the PostgreSQL database":
         user    => $jabber::params::user,
         cwd     => "${jabber::params::src_dir}/${jabber::params::jabber_vers}/tools",
         timeout => $jabber::params::timeout,
         path    => $jabber::params::path,
-        command => "psql -d jabberd2 -a -f db-setup.pgsql",
-        onlyif => "psql "
+        command => "psql -U jabberd2 -d jabberd2 -a -f db-setup.pgsql",
+        unless  => "/usr/bin/test -f ${jabber::params::pg_config_dir}/.puppet_jabber_db_setup",
+        before  => File["${jabber::params::pg_config_dir}/.puppet_jabber_db_setup"],
+
     }
     
+    # Trap door to only allow database setup once
+    file { "${jabber::params::pg_config_dir}/.puppet_jabber_db_setup":
+      ensure  => present,
+      content => "dummy file",
+    }
         
 }
