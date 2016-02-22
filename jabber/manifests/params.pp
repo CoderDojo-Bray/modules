@@ -54,6 +54,6 @@ class jabber::params {
     $routerPort = 5347   
     $routerUser = "jabberd"
     $routerPassword = "f67kli2"    
-    $uniqueC2 = "c2s_" + $::macaddress.tr(':','-')
+    $uniqueC2 = "c2s_" + "$::macaddress".tr(':','-')
     
 }
