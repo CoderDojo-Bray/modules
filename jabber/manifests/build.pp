@@ -103,7 +103,7 @@ class jabber::build {
         cwd     => "${jabber::params::jabber_config_dir}",
         timeout => $jabber::params::timeout,
         path    => $jabber::params::path,
-        command => "chown -R root:${jabber::params::jabber_user} ${jabber::params::jabber_config_dir}"
+        command => "chown -R ${jabber::params::jabber_user}:${jabber::params::jabber_user} ${jabber::params::jabber_config_dir}"
     }
     
     ->
