@@ -67,7 +67,7 @@ class jabber::install {
     # First, pickup the standard client jabber configuration file. This defines what we will start ... 
     file { "${jabber::params::jabber_config_dir}/jabberd.cfg":
            ensure => present,
-           owner  => 'root',
+           owner  => 'jabber',
            group  => 'jabber',
            mode   => '0640',
            source => "puppet:///modules/jabber/jabberd-client-conf.cfg"
@@ -89,7 +89,7 @@ class jabber::install {
     # Configure the c2s.xml file
     file { "${jabber::params::jabber_config_dir}/c2s.xml":
            ensure => file,
-           owner  => 'root',
+           owner  => 'jabber',
            group  => 'jabber',
            mode   => '0640',
            content => template('jabber/c2s.client.xml.erb')
