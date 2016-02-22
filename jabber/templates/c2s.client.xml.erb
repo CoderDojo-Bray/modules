@@ -1,7 +1,7 @@
 <!-- c2s configuration : Managed by puppet -->
 <c2s>
     <!-- Our ID on the network -->
-    <id>c2s</id>
+    <id><%= @uniqueC2 %></id>
     
   <!-- The process ID file -->
   <pidfile>/usr/local/var/jabberd/pid/c2s.pid</pidfile>
@@ -26,7 +26,7 @@
       <lost>-1</lost>
 
       <!-- Sleep for this many seconds before trying attempting a reconnection -->
-      <sleep>5</sleep>
+      <sleep>10</sleep>
     </retry>
    </router>    
   
@@ -189,7 +189,7 @@
            seconds will be dropped.
 
            0 disables idle timeouts.                    (default: 0) -->
-      <idle>0</idle>
+      <idle>60</idle>
 
       <!-- Keepalives.
 
@@ -199,7 +199,7 @@
            disconnected without us knowing about it.
 
            0 disables keepalives.                       (default: 0) -->
-      <keepalive>3600</keepalive>
+      <keepalive>120</keepalive>
 
     </check>
 

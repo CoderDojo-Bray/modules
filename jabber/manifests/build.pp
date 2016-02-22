@@ -113,7 +113,7 @@ class jabber::build {
         cwd     => "${jabber::params::jabber_config_dir}",
         timeout => $jabber::params::timeout,
         path    => $jabber::params::path,
-        command => "chmod -R 640 ${jabber::params::jabber_config_dir}"
+        command => "chmod -R 740 ${jabber::params::jabber_config_dir}"
     }
     
 }
