@@ -52,7 +52,7 @@ class jabber::params {
     # Some client configuration parameters
     $routerServer = "dojobox-core.dyndns-server.com"
     $routerPort = 5347   
-    $routerUser = "dojojab"
+    $routerUser = "jabberd"
     $routerPassword = "f45g6y*i"    
     
 }
