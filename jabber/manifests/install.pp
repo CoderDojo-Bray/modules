@@ -58,6 +58,8 @@ class jabber::install {
     $routerPassword = $jabber::params::routerPassword   
     $routerUser = $jabber::params::routerUser
     $routerPort = $jabber::params::routerPort
+    $uniqueC2S  = regsubst($jabber::params::uniqueC2S,":","_",G)
+
     $masterWANIP  = generate('/etc/puppet/scripts/wanip.sh')
     $routerPEMFile = "${jabber::params::jabber_config_dir}/${jabber::params::jabber_cert_name}"
 
@@ -86,7 +88,7 @@ class jabber::install {
     
     ->
     
-    # Configure the c2s.xml file
+    # Configure the c2s.xml file, this used the variables setup above
     file { "${jabber::params::jabber_config_dir}/c2s.xml":
            ensure => file,
            owner  => 'jabber',
