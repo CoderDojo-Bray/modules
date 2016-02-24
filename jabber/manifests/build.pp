@@ -68,7 +68,7 @@ class jabber::build {
         cwd     => "${jabber::params::src_dir}/${jabber::params::jabber_vers}",
         timeout => $jabber::params::timeout,
         path    => $jabber::params::path,
-        command => "${jabber::params::src_dir}/${jabber::params::jabber_vers}/configure --enable-pgsql=/usr/bin/pg_config --enable-ssl=/usr/bin/openssl --enable-idn",
+        command => "${jabber::params::src_dir}/${jabber::params::jabber_vers}/configure --enable-pgsql=/usr/bin/pg_config --enable-ssl=/usr/bin/openssl --enable-debug",
         creates => "${jabber::params::src_dir}/${jabber::params::jabber_vers}/Makefile"
     }    
 
