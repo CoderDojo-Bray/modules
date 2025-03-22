@@ -55,7 +55,7 @@ GEM
       json
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
-    excon (0.45.4)
+    excon (0.71.0)
     extlib (0.9.16)
     facter (2.4.1)
     faraday (0.9.1)
