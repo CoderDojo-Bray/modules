@@ -2,15 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.1)
-    activemodel (4.2.5.1)
-      activesupport (= 4.2.5.1)
-      builder (~> 3.1)
-    activesupport (4.2.5.1)
-      i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
-      minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
-      tzinfo (~> 1.1)
+    activemodel (6.1.7.5)
+      activesupport (= 6.1.7.5)
+    activesupport (6.1.7.5)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     autoparse (0.3.3)
@@ -192,7 +191,7 @@ GEM
     hocon (0.9.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    i18n (0.9.5)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     inifile (2.0.2)
@@ -306,13 +305,13 @@ GEM
       sfl
     stringify-hash (0.0.2)
     thor (0.19.1)
-    thread_safe (0.3.6)
     trollop (2.1.2)
-    tzinfo (1.2.11)
-      thread_safe (~> 0.1)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
+    zeitwerk (2.7.2)
 
 PLATFORMS
   ruby
